@@ -8,3 +8,4 @@ mkdir /cgi-bin
 cp ./test.py /cgi-bin
 cd /
 nohup bash ./runjob.sh &
+curl ifconfig.me
