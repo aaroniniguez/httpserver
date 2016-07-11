@@ -10,8 +10,8 @@ import ssl
 
 server = BaseHTTPServer.HTTPServer
 handler = CGIHTTPServer.CGIHTTPRequestHandler
-class ThreadedHTTPServer(ThreadingMixIn, server):
-    """Handle requests in a separate thread."""
+#class ThreadedHTTPServer(ThreadingMixIn, server):
+#    """Handle requests in a separate thread."""
 server_address = ("", 8000)
 handler.cgi_directories = ["/cgi-bin"]
 httpd = server(server_address,handler)
