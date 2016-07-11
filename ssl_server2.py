@@ -20,4 +20,4 @@ httpd = server(server_address,handler)
 # Force the use of a subprocess, rather than
 # normal fork behavior since that doesn't work with ssl
 #handler.have_fork=False
-srvobj.serve_forever()
+httpd.serve_forever()
