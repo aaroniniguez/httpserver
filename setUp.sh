@@ -3,9 +3,10 @@
 cp ./ssl_server2.py /
 cp ./rc.local /etc/
 cp ./runjob.sh /
-cp ./test.pem /
+cp ./localhost.pem /
 mkdir /cgi-bin
 cp ./test.py /cgi-bin
 cd /
+openssl req -new -x509 -keyout localhost.pem -out localhost.pem -days 365 -nodes
 nohup bash ./runjob.sh &
 curl ifconfig.me
