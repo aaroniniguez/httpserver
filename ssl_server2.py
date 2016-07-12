@@ -16,8 +16,8 @@ server_address = ("", 8000)
 handler.cgi_directories = ["/cgi-bin"]
 httpd = server(server_address,handler)
 #srvobj = ThreadedHTTPServer(server_address, handler)
-#srvobj.socket = ssl.wrap_socket (srvobj.socket, certfile="./localhost.pem", server_side=True)
+httpd.socket = ssl.wrap_socket (httpd.socket, certfile="./localhost.pem", server_side=True)
 # Force the use of a subprocess, rather than
 # normal fork behavior since that doesn't work with ssl
-#handler.have_fork=False
+handler.have_fork=False
 httpd.serve_forever()
