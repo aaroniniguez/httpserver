@@ -9,4 +9,4 @@ cp ./test.py /cgi-bin
 cd /
 openssl req -new -x509 -keyout localhost.pem -out localhost.pem -days 365 -nodes
 nohup bash ./runjob.sh &
-curl ifconfig.me
+echo "https://yourip:8000/cgi-bin/test.py"
