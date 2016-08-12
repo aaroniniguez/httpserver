@@ -5,7 +5,7 @@ import CGIHTTPServer
 import cgitb; cgitb.enable() ## This line enables CGI error reporting
 import ssl
 #from signal import signal, SIGPIPE, SIG_DFL
-#from SocketServer import ThreadingMixIn
+from SocketServer import ThreadingMixIn
 #import threading
 import time
 
@@ -62,12 +62,11 @@ class getHandler(handler):
 		if f:
 			self.copyfile(f, self.wfile)
 			f.close()
-#class ThreadedHTTPServer(ThreadingMixIn, server):
-#    """Handle requests in a separate thread."""
+class ThreadedHTTPServer(ThreadingMixIn, server):
+    """Handle requests in a separate thread."""
 server_address = ("", 8000)
 getHandler.cgi_directories = ["/cgi-bin"]
-httpd = server(server_address,getHandler)
-#srvobj = ThreadedHTTPServer(server_address, handler)
+httpd = ThreadedHTTPServer(server_address,getHandler)
 httpd.socket = ssl.wrap_socket (httpd.socket, certfile="./localhost.pem", server_side=True)
 # Force the use of a subprocess, rather than
 # normal fork behavior since that doesn't work with ssl
